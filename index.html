@@ -20,14 +20,16 @@
           return false;
         });
         socket.on('chat message', function(msg){
-          $("#messages").append($('<li>').text(msg));
+          $("#messages").append($('<li>').html('<span class="username">' + msg.nickname + '</span>' + '<span class="message-text">: ' + msg.message + '</span>'));
+        });
+        socket.on('status message', function(msg){
+          $("#messages").append($('<li class="status">').text(msg));
         });
         $('body').on('submit', '#message-form', function(e){
           e.preventDefault;
-          console.log('submitted');
           var msg = $('#m').val();
           socket.emit('chat message', msg);
-          $('#messages').append($('<li>').text(msg));
+          $('#messages').append($('<li>').html('<span class="username">me' + '</span>' + '<span class="message-text">: ' + msg + '</span>'));
           $('#m').val('');
           return false;
         });

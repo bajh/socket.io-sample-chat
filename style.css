@@ -12,6 +12,9 @@ body {
   bottom: 40px;
   width: 100%;
 }
+.username {
+  color: rgb(130, 224, 255);
+}
 form { 
   background: #000; 
   padding: 3px; 
@@ -41,4 +44,7 @@ form button {
 }
 #messages li:nth-child(odd) { 
   background: #eee; 
+}
+#messages li.status {
+  background-color: rgb(130, 224, 255);
 }
