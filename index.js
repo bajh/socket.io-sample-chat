@@ -2,8 +2,10 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var nicknames = {};
+var port = process.env.port || 3000
 
 app.get('/', function(req, res) {
+  console.log("connection attempted")
   res.sendFile('index.html', {'root': './'});
 });
 
@@ -24,7 +26,6 @@ io.on('connection', function(socket) {
   });
 });
 
-var port = Number(process.env.port || 3000)
 http.listen(port, function() {
   console.log('listening on *:3000');
 });
